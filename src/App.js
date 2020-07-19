@@ -4,6 +4,8 @@ import Post from './Post'
 import { db } from './firebase'
 import { makeStyles, Button, Modal, Input } from '@material-ui/core';
 import { auth } from 'firebase';
+import { storage } from 'firebase';
+import ImageUpload from './ImageUpload';
 
 
 function getModalStyle() {
@@ -37,13 +39,18 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail ] = useState('')
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState('')
+
+  useEffect(() =>{
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({id: doc.id, post: doc.data()})))
+    })
+  }, [])
 
   useEffect(() => {
     const unsubscribe = auth().onAuthStateChanged((authUser) => {
       if (authUser) {
         // user has logged in
-        console.log(authUser)
         setUser(authUser)
 
         if (authUser.dispalyName) {
@@ -66,12 +73,6 @@ function App() {
     }
   }, [user, username])
   
-  useEffect(() =>{
-    db.collection('posts').onSnapshot(snapshot => {
-      setPosts(snapshot.docs.map(doc => ({id: doc.id, post: doc.data()})))
-    })
-  }, [])
-
   const signUp = (event) => {
     event.preventDefault()
     auth()
@@ -97,6 +98,7 @@ function App() {
 
   return (
     <div className="app">
+        <ImageUpload username="majd" />
       <Modal
         open={open}
         onClose={() => setOpen(false)}
