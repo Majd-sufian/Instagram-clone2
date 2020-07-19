@@ -33,3 +33,16 @@
 .app__postRight {
   margin-left: 20px;
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  .app__postRight {
+    display: none;
+  }
+  
+}
+
+.upload-link a {
+  text-decoration: none;
+}

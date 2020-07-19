@@ -1,6 +1,7 @@
 .post {
     background-color: white;
     max-width: 500px;
+    /* min-width: 400px; */
     border: 1px solid lightgray;
     margin-bottom: 15px;
     /* you can change to 700px */
@@ -13,7 +14,7 @@
     border-bottom: 1px solid lightgray;
 }
 
-.post__text {
+.post__text a{
     font-weight: normal;
     padding: 20px;
   }

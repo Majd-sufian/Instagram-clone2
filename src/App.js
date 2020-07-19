@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Post from './Post'
 import { db } from './firebase'
-import { makeStyles, Button, Modal, Input } from '@material-ui/core';
+import { makeStyles, Button, Modal, Input, Link } from '@material-ui/core';
 import { auth } from 'firebase';
 import { storage } from 'firebase';
 import InstagramEmbed from 'react-instagram-embed';
@@ -173,7 +173,12 @@ function App() {
         /> 
 
         {user ? (
+          <div className="app__loginContainer">
           <Button onClick={() => auth().signOut()}>Logout</Button>
+          <Button className="upload-link" variant="outlined" color="secondary">
+            <a href="#upload">Upload a Post</a>
+          </Button>
+          </div>
         ): (
           <div className="app__loginContainer">
           <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
@@ -181,7 +186,6 @@ function App() {
           </div>
         )}
       </div>
-
 
       <div className="app__posts">
         <div className="app__postLift">
@@ -207,9 +211,9 @@ function App() {
         </div>
       </div>
  
-      <ImageUpload username="majd" />
-
-
+      <div id="upload">
+        <ImageUpload username="majd" />
+      </div>
     </div>
   );
 }
