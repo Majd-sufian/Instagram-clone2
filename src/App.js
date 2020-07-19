@@ -187,7 +187,7 @@ function App() {
         <div className="app__postLift">
           {
             posts.map(({id, post}) => (
-              <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+              <Post user="test" key={id} postId={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
             ))
           }
         </div>
