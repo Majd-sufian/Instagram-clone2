@@ -50,12 +50,13 @@ function Post( {user, postId, username , caption, imageUrl}) {
 
             <img className="post__image" src={imageUrl} />
 
-            <h4 className="post__text"><strong>{username}</strong> {caption}</h4>
+            <h4 className="post__text"><strong class="post__comment__user">{username}</strong> <span> {caption}</span></h4>
         
-            <div className="post__comments">
+
+            <div className={comments.length > 0 ? 'post__comments' : ''} >
                 {comments.map((comment) => (
-                    <p>
-                        <strong>{comment.username}</strong> {comment.text}
+                    <p className="post__comment__text">
+                        <strong class="post__comment__user">{comment.username}</strong> {comment.text}
                     </p>
                 ))}
             </div>

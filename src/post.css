@@ -14,7 +14,7 @@
     border-bottom: 1px solid lightgray;
 }
 
-.post__text a{
+.post__text {
     font-weight: normal;
     padding: 20px;
   }
@@ -52,4 +52,25 @@
 
 .post__comments {
     padding: 20px;
+}
+
+.post__comment__user {
+    color: rgb(38, 38, 38);
+    font-size: 14px;
+    font-weight: 600;
+    gab: normal;
+    line-height: 18px;
+    margin:  0px 0px 0px -5px;
+    padding: 0px 0px 0px 5px;
+}
+
+.post__comment__text {
+    color: rgb(38, 38, 38);
+    font-size: 14px;
+    gab: normal;
+    line-height: 18px;
+}
+
+.post__comments {
+    border-top: 1px solid lightgray;
 }
