@@ -5,6 +5,7 @@ import { db } from './firebase'
 import { makeStyles, Button, Modal, Input } from '@material-ui/core';
 import { auth } from 'firebase';
 import { storage } from 'firebase';
+import InstagramEmbed from 'react-instagram-embed';
 import ImageUpload from './ImageUpload';
 
 
@@ -98,7 +99,6 @@ function App() {
 
   return (
     <div className="app">
-        <ImageUpload username="majd" />
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -165,30 +165,50 @@ function App() {
         </div>
       </Modal>
 
-
-      {user ? (
-        <Button onClick={() => auth().signOut()}>Logout</Button>
-      ): (
-        <div className="app__loginContainer">
-        <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-        <Button onClick={() => setOpen(true)}>Sign Up</Button>
-        </div>
-      )}
-
-
       <div className="app__header">
         <img
          className="app__headerImage"
          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
          alt="instagram"
         /> 
+
+        {user ? (
+          <Button onClick={() => auth().signOut()}>Logout</Button>
+        ): (
+          <div className="app__loginContainer">
+          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+          <Button onClick={() => setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
       </div>
 
-      {
-        posts.map(({id, post}) => (
-          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-        ))
-      }
+
+      <div className="app__posts">
+        <div className="app__postLift">
+          {
+            posts.map(({id, post}) => (
+              <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+            ))
+          }
+        </div>
+        <div className="app__postRight">
+          <InstagramEmbed 
+            url="https://www.instagram.com/p/CCI3RUZAKbH/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagNam="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          /> 
+        </div>
+      </div>
+ 
+      <ImageUpload username="majd" />
+
 
     </div>
   );
