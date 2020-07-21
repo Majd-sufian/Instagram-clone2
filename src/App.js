@@ -40,7 +40,7 @@ function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail ] = useState('')
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null)
 
   useEffect(() =>{
     db.collection('posts').onSnapshot(snapshot => {
@@ -191,7 +191,7 @@ function App() {
         <div className="app__postLift">
           {
             posts.map(({id, post}) => (
-              <Post user="test" key={id} postId={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+              <Post user={user.displayName} key={id} postId={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
             ))
           }
         </div>
@@ -212,7 +212,12 @@ function App() {
       </div>
  
       <div id="upload">
-        <ImageUpload username="majd" />
+          {user?.dispalyName ? (
+            <ImageUpload username={user.displayName} />
+            ): (
+              <h3>Login to upload</h3>
+            )
+          }
       </div>
     </div>
   );

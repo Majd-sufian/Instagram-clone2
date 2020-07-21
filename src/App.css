@@ -3,9 +3,9 @@
   scroll-behavior: smooth;
 }
 
-.app { 
+.app {
   background-color: #fafafa;
- }
+}
 
 .app__header {
   background-color: white;
@@ -14,7 +14,7 @@
   object-fit: contain;
   display: flex;
   justify-content: space-between;
-} 
+}
 
 .app__signup {
   display: flex;
@@ -22,7 +22,6 @@
 }
 
 .app__headerImage {
-  object-fit: contain;
 }
 
 .app__posts {
@@ -35,13 +34,10 @@
   margin-left: 20px;
 }
 
-
 @media (min-width: 320px) and (max-width: 480px) {
-  
   .app__postRight {
     display: none;
   }
-  
 }
 
 .upload-link a {
