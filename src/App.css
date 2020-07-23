@@ -1,10 +1,21 @@
 * {
   margin: 0;
-  scroll-behavior: smooth;
+}
+
+.App {
+  background-color: #fafafa;
 }
 
 .app {
-  background-color: #fafafa;
+  background-color: #141414;
+}
+
+.nav__themeChanger {
+  width: 25px;
+  object-fit: contain;
+  /* height: 0px; */
+  position: relative;
+  top: 8px;
 }
 
 .app__header {
